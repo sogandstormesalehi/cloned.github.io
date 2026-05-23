@@ -1,27 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<!--TODO: THE METADATA OF THE WEBSITE CAN BE EDITED USING THE META TAGS BELOW -->
   <meta charset="utf-8">
-  <meta name="description"
-        content="Template project website. Replace this line with a one-sentence summary of your project.">
-  <meta name="keywords" content="project website, template, research">
+  <meta name="description" content="CLoNeD: Closed-Loop Visual Neuromodulation under Neural Drift — making surrogate-assisted neural image search robust to within-session drift using adaptive state-aware surrogates.">
+  <meta name="keywords" content="brain-computer interface, neural drift, fMRI, closed-loop neuromodulation, genetic search, surrogate model, adaptive window">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Project Title</title>
-<!------------------------------------------------------------------------->
+  <title>CLoNeD: Closed-Loop Visual Neuromodulation under Neural Drift</title>
 
-
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/favicon.svg">
 
@@ -42,514 +33,926 @@
 </head>
 <body>
 
-<!--TODO: THE HEADLINE OF THE WEBPAGE: TITLE AND AUTHORS -->
-
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Project Title</h1>
+          <h1 class="title is-1 publication-title">
+            CLoNeD: Closed-Loop Visual Neuromodulation under Neural Drift
+          </h1>
           <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://people.epfl.ch/">John Doe</a>,
-            </span>
-            <span class="author-block">
-              <a href="https://people.epfl.ch/">Alice Smith</a>,
-            </span>
-            <span class="author-block">
-              <a href="https://people.epfl.ch/">Bob Johnson</a>,
-            </span>
-            <span class="author-block">
-              <a href="https://people.epfl.ch/">Jane Doe</a>
-            </span>
+            <span class="author-block"><a href="https://people.epfl.ch/sogand.salehi">Sogand Salehi</a>,</span>
+            <span class="author-block"><a href="https://people.epfl.ch/elies.amari-milliti">Elies Amari-Milliti</a>,</span>
+            <span class="author-block"><a href="https://people.epfl.ch/florian.dejean">Florian Olivier Déjean</a>,</span>
+            <span class="author-block"><a href="https://people.epfl.ch/michal.grudzien">Michał Grudzień</a></span>
           </div>
-
-<!------------------------------------------------------------------------->
-
-<!--TODO: THE LINKS RELATED TO THE PROJECT -->
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="https://arxiv.org"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Document</span>
-                </a>
-              </span>
-              <!-- YouTube Link. -->
-              <span class="link-block">
-                <a href="https://www.youtube.com"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
-              <!-- GitHub Link. -->
-              <span class="link-block">
-                <a href="https://github.com/tarhanefe/cs503-project-template"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Project Code</span>
-                  </a>
-              </span>
-              <!-- Dataset Link. -->
-                <span class="link-block">
-                  <a href="https://drive.google.com/drive/folders/13W_453e-h2TWAfAnp6Ga00TYwEzTnMtg?usp=sharing"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-google-drive"></i>
-                    </span>
-                    <span>Dataset/Drive</span>
-                  </a>
-                </span>
-              <!-- GitHub Website Link. -->
-              <span class="link-block">
-                <a href="https://github.com/tarhanefe/cs503-project-template"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Website Code</span>
-                  </a>
-              </span>
-            </div>
-
+          <div class="is-size-6 publication-authors" style="margin-top:0.4rem;color:#888;">
+            <span>EPFL — CS-503 Visual Intelligence</span>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!------------------------------------------------------------------------->
-
-<!--TODO: THE LINKS RELATED TO THE PROJECT -->
 
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <!-- TODO: Replace with your teaser image, gif or video file. Choose something that represents your project. -->
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Project Name</span> one-sentence teaser about what your project does.
+      <h2 class="subtitle has-text-centered mb-4">
+        How do you optimize for a brain region that keeps changing, when all you ever see is a single number?
       </h2>
+      <div class="columns is-centered">
+        <div class="column has-text-centered" style="max-width:820px;margin:0 auto;">
+          <img src="./static/images/res.png" alt="Generated images across drift conditions"
+               style="border-radius:10px;width:100%;"/>
+          <p class="mt-3" style="font-size:0.9rem;color:#444;line-height:1.6;text-align:left;">
+            <strong>Left:</strong> Images generated by our algorithm across different drift
+            conditions. Each pair or triplet shows the best-scoring images at the start and
+            end of the session (or at each transition for multi-region sequences). The target
+            brain region shifts over time, but the algorithm observes only a single blended
+            scalar reward and is never told when or whether a shift has occurred. Despite this,
+            it consistently redirects its outputs as the target changes: from faces to bodies
+            (<strong>FFA→EBA</strong>), faces to places (<strong>FFA→PPA</strong>,
+            <strong>OFA→PPA</strong>), and through multi-step visual hierarchies
+            (<strong>V1v→PPA→FFA</strong>, <strong>FFA→PPA→V1v</strong>).
+            The bottom-right sequence (<strong>FFA→PPA→V1v</strong>) illustrates an emergent
+            behaviour: the cat face that drove FFA persisted across both transitions; the
+            algorithm added scene context for PPA and then high-frequency edges for V1v,
+            never discarding content that had already proven effective.
+            <strong>Right:</strong> A flattened map of the human visual cortex colour-coded
+            by region, showing the anatomical layout of the ROIs targeted in our experiments.
+            Figure adapted from the BERG model card
+            <a href="https://brain-encoding-response-generator.readthedocs.io/en/latest/models/model_cards/fmri-nsd_fsaverage-huze.html"
+               target="_blank">[Yang et al.]</a>.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-
-<!------------------------------------------------------------------------->
-
-<!--TODO: ABSTRACT OF THE PROJECT -->
 
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            <!-- TODO: Replace this abstract with your own project summary (3-5 sentences). -->
-            [Problem] Briefly describe the problem your project tackles and why it matters.
+          <div class="content has-text-justified">
+            <p>
+              Closed-loop neural stimulus optimisation finds images that maximally drive a
+              target brain region using only scalar neural feedback. We build on
+              surrogate-assisted genetic search over a structured prompt space. A core
+              assumption shared across existing approaches is that the target region remains
+              fixed throughout the session. In practice this is routinely violated: neural
+              responses drift within minutes due to fatigue, habituation, and fluctuating
+              attention, and the algorithm observes only a single blended scalar reward and
+              is never told a shift has occurred. We study how to make surrogate-assisted
+              search robust to this drift, simulating it by smoothly interpolating the reward
+              across multiple fMRI-characterised brain regions so the algorithm must
+              transition between targets blindly. Our central finding is that the benefit of
+              state-awareness depends critically on the correlation structure between
+              successive targets. When regions share image preferences, the incoming target
+              rises before the transition as a side-effect of optimising the outgoing one, a
+              free ride that stateless search exploits fully while state-aware methods disrupt
+              it. When regions prefer opposing content, state-awareness wins by actively
+              forgetting the pre-drift landscape. We introduce an adaptive window controller
+              that infers the drift regime from the reward signal alone and adjusts the
+              surrogate's memory accordingly, avoiding both failure modes without requiring
+              any prior knowledge of the underlying cause for drift.
           </p>
-          <p>
-            [Approach] Explain your main idea, model, or system in one to two sentences.
-          </p>
-          <p>
-            [Results] Summarize key outcomes, such as quantitative improvements, qualitative
-            observations, and main conclusions.
-          </p>
+    </div>
+  </div>
+</div>
+
+    <div class="columns is-centered has-text-centered mt-4">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Overview</h2>
+        <div class="tile is-ancestor is-centered">
+          <div class="tile is-parent"><a href="#intro" class="tile is-child box"><p class="subtitle"><font size="-1">Introduction</font></p></a></div>
+          <div class="tile is-parent"><a href="#related-work" class="tile is-child box"><p class="subtitle"><font size="-1">Related Works</font></p></a></div>
+          <div class="tile is-parent"><a href="#method" class="tile is-child box"><p class="subtitle"><font size="-1">Method</font></p></a></div>
+          <div class="tile is-parent"><a href="#experiments" class="tile is-child box"><p class="subtitle"><font size="-1">Experiments</font></p></a></div>
+          <div class="tile is-parent"><a href="#negative" class="tile is-child box"><p class="subtitle"><font size="-1">What Didn't Work</font></p></a></div>
+          <div class="tile is-parent"><a href="#conclusion" class="tile is-child box"><p class="subtitle"><font size="-1">Conclusion</font></p></a></div>
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
-<!------------------------------------------------------------------------->
-<!--TODO: LIST OF ITEMS IN THE WEBSITE -->
 
-<div class="columns is-centered has-text-centered">
-        <div class="column is-full-width">
-
-          <h2 class="title is-3">Overview</h2>
-          <div class="tile is-ancestor is-centered" style="vertical-align: middle;">
-            <div class="tile is-parent">
-              <a href="#intro" class="tile is-child box">
-                <p class="subtitle">
-                  <font size="-1">Introduction</font>
-                </p>
-              </a>
-            </div>
-
-            <div class="tile is-parent">
-              <a href="#related-work" class="tile is-child box">
-                <p class="subtitle">
-                  <font size="-1">Related Works</font>
-                </p>
-              </a>
-            </div>
-
-            <div class="tile is-parent">
-              <a href="#method" class="tile is-child box">
-                <p class="subtitle">
-                  <font size="-1">Methodology</font>
-                </p>
-              </a>
-            </div>
-
-            <div class="tile is-parent">
-              <a href="#results" class="tile is-child box">
-                <p class="subtitle">
-                  <font size="-1">Results</font>
-                </p>
-              </a>
-            </div>
-
-            <div class="tile is-parent">
-              <a href="#conclusion" class="tile is-child box">
-                <p class="subtitle">
-                  <font size="-1">Conclusion and Limitations</font>
-                </p>
-              </a>
-            </div>
-<!--- TODO: Remove this part, this is here to show you possible visualizations used in the website ---------------->
-
-            <div class="tile is-parent">
-              <a href="#visual_items" class="tile is-child box">
-                <p class="subtitle">
-                  <font size="-1">Visual Items</font>
-                </p>
-              </a>
+    <div class="columns is-centered mt-6">
+      <div class="column is-full-width">
+        <h2 class="title is-4 has-text-centered">Two-ROI Drift in Action</h2>
+        <p class="has-text-centered mb-4" style="color:#555;font-size:0.95rem;">
+          The algorithm must track two sequential target brain regions using only a single
+          blended scalar reward. The videos show the same run under two algorithms, stateless
+          and state-aware, as the target shifts.
+        </p>
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <div class="box has-text-centered">
+              <h3 class="title is-5 mb-3" style="color:#d6604d;">Stateless</h3>
+              <img src="./static/gifs/output_stateless.gif" width="100%"
+                   style="border-radius:6px;" alt="Stateless search"/>
+              <p class="mt-3" style="font-size:0.85rem;color:#555;text-align:left;">
+                A human face emerges early and dominates throughout. The stateless surrogate
+                accumulates the full session history and keeps ranking face-driving content
+                highly, even after the target shifts to PPA. With no mechanism to forget
+                what worked before, the search stays anchored to the pre-drift landscape.
+              </p>
             </div>
           </div>
-
+          <div class="column is-half">
+            <div class="box has-text-centered">
+              <h3 class="title is-5 mb-3" style="color:#4dac26;">State-aware</h3>
+              <img src="./static/gifs/output_stateaware.gif" width="100%"
+                   style="border-radius:6px;" alt="State-aware search"/>
+              <p class="mt-3" style="font-size:0.85rem;color:#555;text-align:left;">
+                Starting from the same human face, the generated images gradually shift toward
+                architectural and outdoor scenes as the target moves to PPA. Traces of earlier
+                content persist, reflecting the blended reward still partially crediting the
+                old target, but state-awareness lets the algorithm redirect without fully
+                discarding what came before.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-<!------------------------------------------------------------------------->
+    </div>
   </div>
 </section>
 
-<!-----------------------------TODO: INTRODUCTION-------------------------------->
-  <section class="section">
-    <div class="container is-max-desktop">
-      <!-- Introduction. -->
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3" id="intro">I. Introduction</h2>
-          <div class="content has-text-justified">
-            <p>
-              The introduction part of the report can be provided here
-            </p>
-          </div>
-        </div>
-      </div>
-      <!--/ Introduction. -->
-    </div>
-  </section>
-<!------------------------------------------------------------------------->
-
-<!-----------------------------TODO: RELATED WORKS-------------------------------->
-  <section class="section">
-    <div class="container is-max-desktop">
-      <!-- Related Works. -->
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3" id="related-work">II. Related Works</h2>
-          <div class="content has-text-justified">
-            <p>
-              The related works part of the report can be provided here
-            </p>
-          </div>
-        </div>
-      </div>
-      <!--/ Related Works. -->
-    </div>
-  </section>
-<!------------------------------------------------------------------------->
-
-<!-----------------------------TODO: METHODOLOGY-------------------------------->
-  <section class="section">
-    <div class="container is-max-desktop">
-      <!-- Methodology. -->
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3" id="method">III. Methodology</h2>
-          <div class="content has-text-justified">
-            <p>
-              The methodology part of the report can be provided here
-            </p>
-          </div>
-        </div>
-      </div>
-      <!--/ Methodology. -->
-    </div>
-  </section>
-
-<!------------------------------------------------------------------------->
-
-<!-----------------------------TODO: RESULTS-------------------------------->
-  <section class="section">
-    <div class="container is-max-desktop">
-      <!-- Results. -->
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3" id="results">IV. Results</h2>
-          <div class="content has-text-justified">
-            <p>
-              The results part of the report can be provided here
-            </p>
-          </div>
-        </div>
-      </div>
-      <!--/ Results. -->
-    </div>
-  </section>
-<!------------------------------------------------------------------------->
-
-<!-----------------------------TODO: DISCUSSION-------------------------------->
-  <section class="section">
-    <div class="container is-max-desktop">
-      <!-- Conclusion and Limitations. -->
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3" id="conclusion">V. Conclusion and Limitations</h2>
-          <div class="content has-text-justified">
-            <p>
-              The conclusion and limitations part of the report can be provided here
-            </p>
-          </div>
-        </div>
-      </div>
-      <!--/ Conclusion and Limitations. -->
-    </div>
-  </section>
-<!------------------------------------------------------------------------->
-
-<!-----------------------------TODO: VISUAL ITEMS THAT CAN BE USED-------------------------------->
-  <section class="section">
-    <div class="container is-max-desktop">
-      <!-- Visual Items. -->
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3" id="visual_items">V. Visual Items</h2>
-          <div class="content has-text-justified">
-            <p>
-            Here you can see possible visualizations that can be used in this website 
-            </p>
-          </div>
-        <h3 class="title is-4">Video Clip</h3>
-       <!-- Video can be added like this -->   
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-       <!---------------------------------> 
-           
-      <h3 class="title is-4">Image Interpolation with Slider</h3>
-       <!-- Image can be added like this -->
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
-            </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
-          </div>
-        </div>
-        
-<h3 class="title is-4">Double Column Media Display</h3>
-    <div class="columns is-centered is-multiline">
-      <!-- Column 1. -->
-      <div class="column is-half">
-        <div class="content">
-          <h3 class="title is-5">Column 1</h3>
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3" id="intro">I. Introduction</h2>
+        <div class="content has-text-justified">
           <p>
-            Add a short description for the first video/image.
+            The visual cortex is not a passive recorder but a highly selective system where
+            different regions respond strongly to specific categories of content. The fusiform
+            face area lights up for faces
+            <a href="https://doi.org/10.1523/JNEUROSCI.17-11-04302.1997" target="_blank">[Kanwisher et al. 1997]</a>,
+            the parahippocampal place area for scenes
+            <a href="https://doi.org/10.1038/33402" target="_blank">[Epstein &amp; Kanwisher 1998]</a>,
+            and the extrastriate body area for bodies
+            <a href="https://doi.org/10.1126/science.1063414" target="_blank">[Downing et al. 2001]</a>.
+            Understanding these selectivities, and generating images that drive them on demand,
+            has broad applications: from probing the functional organisation of the brain to
+            designing stimuli for neuroprosthetics and closed-loop therapeutic systems.
           </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline width="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <!--/ Column 1 -->
-
-      <!-- Column 2 -->
-      <div class="column is-half">
-        <div class="content">
-          <h3 class="title is-5">Column 2</h3>
           <p>
-            Add a short description for the second video/image.
+            Methods such as BrainDiVE
+            <a href="https://arxiv.org/abs/2306.03089" target="_blank">[Luo et al. 2023]</a>
+            and BrainACTIV
+            <a href="https://www.biorxiv.org/content/early/2024/10/31/2024.10.29.620889" target="_blank">[Cerdas et al. 2024]</a>
+            have shown that neural encoding models can guide generative models to synthesise
+            maximally activating images by backpropagating through the encoder. This works well
+            in silico but does not transfer directly to a real experimental session: actual neural
+            responses from a human subject are not differentiable, and the encoding model is only
+            an approximation of the true brain. A more realistic setting treats the oracle as a
+            pure input-output function where the algorithm proposes images, the brain returns a
+            scalar score, and no gradients are available. This is also expensive: a typical fMRI
+            session yields only a few hundred usable image presentations before the subject
+            fatigues, making sample efficiency critical.
           </p>
-          <video id="matting-video" controls playsinline width="100%">
-            <source src="./static/videos/matting.mp4"
-                    type="video/mp4">
-          </video>
+          <p>
+            A shared assumption across existing approaches is that the target brain region stays
+            fixed throughout the session. In real sessions this is routinely violated: a subject's
+            neural responses to the same image can shift meaningfully within minutes as fatigue
+            accumulates, attention fluctuates, or habituation sets in
+            <a href="https://www.sciencedirect.com/science/article/pii/S1364661305003232" target="_blank">[Grill-Spector et al. 2006]</a>.
+            This problem is most acute in EEG, where the signal is noisier and faster-changing
+            than fMRI, making stable region-level targeting harder to maintain across a session.
+            We use fMRI region activations as a controlled simulation substrate precisely because
+            their selectivity is well-characterised, but the drift regimes we study are motivated
+            by the messier reality of EEG deployment. A surrogate that has accumulated evidence
+            about the pre-drift landscape will keep exploiting it even after the target has
+            shifted, actively steering the search in the wrong direction, and the algorithm has
+            no direct access to the shift, only a single blended scalar reward.
+          </p>
+          <p>
+            We build on prior work that uses surrogate-assisted genetic search over a structured
+            text prompt space to find images that maximally drive target brain regions, and extend
+            it with drift-aware components. Our central contribution is a study of when and why
+            state-awareness helps. When the pre- and post-drift targets share image preferences,
+            the incoming region was already rising before the transition as a side-effect of
+            optimising the outgoing one, and state-awareness actively hurts here by suppressing
+            content that was already working. When the regions prefer opposing content,
+            state-awareness wins by forgetting the pre-drift landscape. This insight motivates
+            an adaptive window controller that infers the drift regime from the reward signal
+            alone and adjusts the surrogate's memory accordingly, without any prior knowledge
+            of the target correlation structure.
+          </p>
         </div>
       </div>
-      <!--/ Column 2 -->
     </div>
-  <!--------------------------------->
-<h3 class="title is-4">Card Media Display</h3>
-      <div class="columns is-centered">
-        <div class="column is-three-quarters">
-          <div align="center" class="box">
-            <img src="static/images/related_2.gif"
-              alt="3D Bezier curves are used for representing 3D sketches of objects.">
-            <h5 class="subtitle has-text-centered">
-              <font size="-0.7">
-                <span style="font-weight:normal">
-                  Write about the media displayed in the card here. You can also add a link to the media if needed.
-                </span>
-              </font>
-            </h5>
-          </div>
-        </div>
-      </div>
-<!--------------------------------->
-<h3 class="title is-4">LaTeX Equation</h3>
-  
-Format the equations using LaTeX and add them to the website like this:
-    <p>
-        \[
-        D_{\mathrm{KL}}(P \parallel Q) =
-        \sum_{x} P(x)\,\log\!\left(\frac{P(x)}{Q(x)}\right)
-        \]
-    </p>
-<!--------------------------------->
-
-<h3 class="title is-4">Sliding Media Display</h3>
-    <section class="section">
-      <div class="container is-max-desktop">
-        <div id="dataset-carousel" class="carousel results-carousel">
-          <a href="./static/gifs/bike.gif" data-lightbox="image">
-            <img src="./static/gifs/bike.gif" alt="Bike Object">
-          </a>
-
-          <a href="./static/gifs/duck.gif" data-lightbox="image">
-            <img src="./static/gifs/duck.gif" alt="Duck Object">
-          </a>
-
-          <a href="./static/gifs/horse.gif" data-lightbox="image">
-            <img src="./static/gifs/horse.gif" alt="Horse Object">
-          </a>
-
-          <a href="./static/gifs/rose.gif" data-lightbox="image">
-            <img src="./static/gifs/rose.gif" alt="Rose Object">
-          </a>
-        </div>
-      </div>
-    </section>
-<!--------------------------------->
-<h3 class="title is-4">Table</h3>
-
-<div class="content has-text-justified">
-  <p>
-    The table format below can be used for results and other purposes.
-  </p>
-  <div class="table-container">
-    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-      <thead>
-        <tr>
-          <th>Method</th>
-          <th>Metric 1</th>
-          <th>Metric 2</th>
-          <th>Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Baseline</td>
-          <td>0.00</td>
-          <td>0.00</td>
-          <td>Reference setup</td>
-        </tr>
-        <tr>
-          <td>Method A</td>
-          <td>0.00</td>
-          <td>0.00</td>
-          <td>First variant</td>
-        </tr>
-        <tr>
-          <td>Method B</td>
-          <td>0.00</td>
-          <td>0.00</td>
-          <td>Second variant</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
-</div>
+</section>
 
-<!--------------------------------->
-<h3 class="title is-4">Interactive Plot</h3>
-<div class="box">
-  <iframe src="./static/plotly/interactive_plot.html" frameborder="0" width="100%"
-    height="500px"></iframe>
-</div>
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3" id="related-work">II. Related Work</h2>
+        <div class="content has-text-justified">
 
-<!--------------------------------->
+          <h3 class="title is-4">Neural Encoding Models and Closed-Loop Image Optimisation</h3>
+          <p>
+            Our algorithm treats the brain as a black-box oracle returning a scalar reward per
+            image. In simulation this reward comes from a neural encoding model; in a real session
+            it would come from neural recordings directly. The Natural Scenes Dataset
+            <a href="https://doi.org/10.1038/s41593-021-00962-x" target="_blank">[Allen et al. 2022]</a>
+            provides 7T fMRI responses for 8 subjects across tens of thousands of naturalistic
+            images, and <a href="https://brain-encoding-response-generator.readthedocs.io" target="_blank">BERG</a>
+            builds pre-trained encoding models for 23 visual ROIs per subject, serving as our
+            oracle. The idea of closed-loop neural stimulus optimisation originates in
+            electrophysiology: XDream
+            <a href="https://arxiv.org/abs/1905.00378" target="_blank">[Ponce et al. 2019]</a>
+            used a genetic algorithm to maximise single-neuron firing in macaque visual cortex,
+            and NeuroGen
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8845078/" target="_blank">[Gu et al. 2022]</a>
+            extended this to human fMRI with BigGAN. A shared assumption across these works is
+            that the target region remains fixed throughout the session, which our work relaxes.
+          </p>
+
+          <h3 class="title is-4">Surrogate-Assisted Evolutionary Search</h3>
+          <p>
+            Surrogate-assisted evolutionary algorithms pair a population-based search with a
+            cheap proxy model that pre-screens offspring before each expensive oracle call,
+            reducing oracle queries by orders of magnitude
+            <a href="https://doi.org/10.1023/A:1008306431147" target="_blank">[Jones et al. 1998]</a>;
+            <a href="https://www.sciencedirect.com/science/article/pii/S0957417422025143" target="_blank">[He et al. 2023]</a>.
+            Maintaining surrogate quality when the objective landscape itself shifts has received
+            comparatively little attention: existing methods are largely designed for static
+            objectives, and the dynamic setting remains an open problem
+            <a href="https://arxiv.org/abs/2211.02879" target="_blank">[Li &amp; Chen 2022]</a>.
+            Standard methods accumulate all historical evaluations; under drift the growing pool
+            of stale observations actively misleads the surrogate. Recency windowing is the
+            natural fix, but setting the window length without prior knowledge of the drift
+            structure is non-trivial. Our adaptive window controller addresses this by inferring
+            the appropriate memory length from the reward trajectory alone.
+          </p>
+
+          <h3 class="title is-4">Concept Drift Detection and Adaptation</h3>
+          <p>
+            Learning from shifting data streams is well-studied in the online learning literature
+            <a href="https://arxiv.org/abs/1010.4784" target="_blank">[Gama et al. 2014]</a>.
+            Detection-based methods monitor error rates and trigger resets on degradation;
+            window-based methods such as ADWIN
+            <a href="https://epubs.siam.org/doi/10.1137/1.9781611972771.42" target="_blank">[Bifet &amp; Gavaldà 2007]</a>
+            maintain an adaptive sliding window with statistical guarantees. The foundational
+            problem of concept drift, that models built on old data become inconsistent with new
+            data as the underlying distribution shifts, was systematically characterised by
+            <a href="https://www.researchgate.net/publication/228723141_The_Problem_of_Concept_Drift_Definitions_and_Related_Work" target="_blank">[Tsymbal 2004]</a>,
+            whose taxonomy of drift types informs our distinction between smooth and abrupt
+            transitions. Our controller uses the slope-to-variance ratio of the recent reward
+            trajectory as a detection signal to drive a forgetting-like mechanism, adapted to
+            the specific setting of a genetic search with no access to ground-truth labels.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3" id="method">III. Method</h2>
+        <div class="content has-text-justified">
+
+          <div class="columns is-centered mb-5">
+            <div class="column is-full">
+              <div class="box has-text-centered">
+                <img src="./static/images/method_overview.png" alt="Method overview" width="100%"/>
+                <p class="subtitle is-6 mt-2">
+                  TODO Elies
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="title is-4">3.1 Search Space and Base Algorithm</h3>
+          <p>
+            The search space and base algorithm follow an approach developed in ongoing work
+            in our lab. We search a structured text prompt space of approximately
+            $10^{23}$ candidates, where each candidate is a tuple of indices across 17 semantic
+            dimensions decoded into a natural language prompt and rendered by SDXL-Turbo. A BERG
+            fMRI encoding model scores each rendered image, serving as the oracle. Because
+            querying the oracle for every candidate is infeasible, we use a CLIP text surrogate,
+            a Ridge ensemble trained on observed (prompt, score) pairs, to filter the search:
+            1000 candidates are bred and scored by the surrogate each generation, and only the
+            top 20 by acquisition score are sent to the oracle.
+          </p>
+          <p>
+            Drift is simulated by blending the rewards of multiple ROIs using a chain of sigmoid
+            transitions. For $N$ ROIs with $N-1$ transition midpoints
+            $m_1 &lt; m_2 &lt; \cdots &lt; m_{N-1}$, we define
+            $s_i(t) = \sigma\!\left(k\!\left(\tfrac{t}{T} - m_i\right)\right)$
+            with $k = 6$ throughout, and assign weights
+            \[
+              w_1(t) = 1 - s_1, \quad
+              w_i(t) = s_{i-1}\,(1 - s_i) \text{ for } 1 &lt; i &lt; N, \quad
+              w_N(t) = s_{N-1}.
+            \]
+            The blended reward is $r(t) = \sum_{i=1}^{N} w_i(t)\,\tilde{r}_i$,
+            where $\tilde{r}_i$ is the normalised score for ROI $i$.
+            Transition midpoints are set to $m = 0.60$ for two-ROI sequences (200 evals),
+            $(m_1, m_2) = (0.40, 0.70)$ for three-ROI sequences (300 evals), and
+            $(m_1, m_2, m_3) = (0.33, 0.56, 0.78)$ for four-ROI sequences (300 evals).
+            The individual ROI scores are never revealed; the algorithm observes only
+            the blended scalar $r(t)$.
+          </p>
+
+          <div class="columns is-centered mt-4 mb-2">
+            <div class="column">
+              <div class="box has-text-centered">
+                <img src="./static/images/fig_drift_schedules.png"
+                     alt="ROI weight schedules" width="100%"/>
+                <p class="subtitle is-6 mt-2">
+                  The drift simulation across our three experimental conditions. Each coloured
+                  band shows one ROI's contribution to the blended scalar reward the algorithm
+                  observes. The two-ROI condition has a single transition at eval 120 (out of
+                  200); the three-ROI condition transitions at evals 120 and 210 (out of 300);
+                  and the four-ROI condition transitions at evals 99, 168, and 234 (out of 300).
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="title is-4">3.2 Recency Windowing</h3>
+          <p>
+            Without drift awareness, the surrogate accumulates the full session history and
+            anchors the search to the pre-drift landscape. We address this by restricting
+            surrogate training to the $W_s$ most recently evaluated prompts and elite selection
+            to the $W_e$ most recent candidates, so that stale observations from an earlier
+            target region do not dominate the surrogate's fit. Both windows are coupled so that
+            the candidates used for breeding are always drawn from the same recency horizon as
+            the surrogate's training data. $W_s$ is initialised to the full session length,
+            making the algorithm effectively stateless at the start, and is subsequently
+            controlled by the adaptive window controller described in Section 3.4.
+          </p>
+
+          <h3 class="title is-4">3.3 State-Conditioned Surrogate</h3>
+          <p>
+            Recency windowing limits how much stale history the surrogate sees, but it cannot
+            distinguish between a reward that is rising because the search is improving and one
+            that is declining because the target has shifted. To give the surrogate access to
+            this context, we augment each training point's CLIP text embedding with a
+            three-dimensional session state descriptor:
+            \[
+              \mathbf{s} = \bigl[\,\mu,\;\dot{r},\;\sigma^2\,\bigr]
+            \]
+            where $\mu$, $\dot{r}$, and $\sigma^2$ are the mean, slope, and variance of the
+            blended reward over the most recent 20 evaluations at the time that training point
+            was collected. The surrogate learns $\hat{r} = f(\mathbf{x}, \mathbf{s})$,
+            conditioning predictions on both image content and current session dynamics. At
+            inference time, each candidate in the pool is augmented with the state descriptor
+            at the current evaluation index before scoring.
+          </p>
+
+          <h3 class="title is-4">3.4 Adaptive Window Controller</h3>
+          <p>
+            The recency window $W_s$ is controlled by a per-generation drift detector operating
+            entirely on the blended reward signal. After each generation, the controller
+            maintains a rolling buffer of the last $B = 5$ generation means and computes:
+            \[
+              \text{drift_score} = \frac{-\,\text{slope}(\bar{g}_{t-B:t})}
+                                          {\text{var}(\bar{g}_{t-B:t}) + \varepsilon}
+            \]
+            This quantity is large when the reward is declining quietly, negative slope with
+            low variance, which is the characteristic signature of a high-correlation free ride
+            ending. It remains low when the reward drops sharply and noisily, the anti-correlated
+            case, which is handled by the slope trigger described below.
+          </p>
+          <p>
+            When the drift score exceeds $\tau = 0.2$, the window shrinks:
+            $W_s \leftarrow \max(W_{\min},\; W_s \times 0.6)$, and an explorer injection is
+            forced to introduce candidates from distant regions of the prompt space. When the
+            score remains below zero for three consecutive generations, the window grows back:
+            $W_s \leftarrow \min(W_{\max},\; W_s \times 1.15)$. The controller is initialised
+            at $W_s = W_{\max} = 100$ and the floor is $W_{\min} = 20$.
+          </p>
+          <p>
+            A secondary slope trigger fires when the linear slope over the last 20 evaluations
+            falls below $-0.005$, injecting candidates from the most distant CLIP-PCA clusters
+            relative to already-evaluated prompts. The two mechanisms are complementary: the
+            window controller handles smooth correlated drift by adjusting surrogate memory,
+            while the slope trigger handles sharp stagnation by diversifying the candidate pool.
+          </p>
+
+          <h3 class="title is-4">3.5 TODO Elies</h3>
 
         </div>
       </div>
-      <!--/ Visual Items. -->
     </div>
-  </section>
+  </div>
+</section>
 
-<!------------------------------------------------------------------------->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3" id="experiments">IV. Experiments</h2>
+        <div class="content has-text-justified">
 
-<footer class="footer">
-            <div class="container">
-              <div class="content has-text-centered">
-                <!-- Optional icon link (e.g., to GitHub repo) -->
-              </div>
+          <h3 class="title is-4">4.1 Setup</h3>
+          <p>
+            We evaluate across three conditions of increasing complexity: eight two-ROI
+            pairs (200 evals, one transition at eval 120), eight three-ROI triplets
+            (300 evals, transitions at evals 120 and 210), and four four-ROI quadruplets
+            (300 evals, transitions at evals 99, 168, and 234). All conditions use 20
+            random seeds. We compare three algorithms: <strong>Stateless</strong> (no
+            windowing, full history), <strong>Classic state-aware</strong> (fixed
+            $W_s = 40$, $W_e = 20$, state descriptor, slope trigger), and
+            <strong>Adaptive state-aware</strong> ($W_s$ initialised at 100 and
+            controller-driven, state descriptor, slope trigger). Component ablations
+            were conducted to isolate individual contributions.
+          </p>
+          <p>
+            Our primary metric is <em>peak new ROI score</em>: mean raw activation of
+            the new target region over the last 50 evaluations. We additionally report
+            <em>adaptation quality</em> ($\Delta Q$): the simultaneous rise of the new
+            region and fall of the old over a $\pm 50$-eval window around the transition:
+            \[
+              \Delta Q = \bigl(\overline{\text{raw}_b}^{\,\text{post}} -
+              \overline{\text{raw}_b}^{\,\text{pre}}\bigr) -
+              \bigl(\overline{\text{raw}_a}^{\,\text{post}} -
+              \overline{\text{raw}_a}^{\,\text{pre}}\bigr)
+            \]
+            and <em>crossover</em>: whether the new region's 10-eval rolling mean ever
+            exceeded the old region's. All comparisons are Cohen's $d$ relative to
+            stateless, assessed by Mann-Whitney U test.
+          </p>
 
-              <div class="columns is-centered">
-                <div class="column is-8">
-                  <div class="content">
-                    <h6 class="title is-6">Individual Contributions</h6>
-                    <p>
-                      Add the contributions of each team member here.
-                    </p>
-                    <p><em>
-                        This website is based on the <a href="https://github.com/nerfies/nerfies.github.io"
-                          target="_blank">Nerfies website template</a>,
-                        which is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"
-                          target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-                      </em></p>
-                  </div>
+          <h3 class="title is-4">4.2 State-Awareness Helps — But Only When Needed</h3>
+          <p>
+            The central finding is that the benefit of state-awareness depends critically
+            on the correlation between successive target regions. We quantify this using
+            Pearson $r$ computed from raw BERG scores pooled across seeds under the
+            stateless algorithm, reflecting how similarly the two regions respond to the
+            generated image distribution. Table 1 shows results across all eight two-ROI
+            pairs grouped by correlation regime.
+          </p>
+
+          <!-- Table 1 -->
+          <div class="columns is-centered mt-4 mb-2">
+            <div class="column">
+              <div class="box">
+                <p class="subtitle is-6 has-text-centered mb-3">
+                  <strong>Table 1. Two-ROI results across all pairs.</strong>
+                  Peak new ROI score (mean raw activation, last 50 evals) and adaptation
+                  quality $\Delta Q$ for each algorithm. Cohen's $d$ and significance are
+                  relative to stateless. "Never" = seeds where the new region never overtook
+                  the old. Pairs sorted by correlation regime.
+                </p>
+                <div style="overflow-x:auto;">
+                  <table class="table is-fullwidth is-hoverable is-size-7"
+                         style="text-align:center;">
+                    <thead>
+                      <tr style="background:#f5f5f5;">
+                        <th rowspan="2" style="vertical-align:middle;text-align:left;">Pair</th>
+                        <th rowspan="2" style="vertical-align:middle;">$r$</th>
+                        <th colspan="3" style="border-bottom:1px solid #ddd;">
+                          Peak new ROI score</th>
+                        <th colspan="2" style="border-bottom:1px solid #ddd;">
+                          vs Stateless ($d$)</th>
+                        <th colspan="3" style="border-bottom:1px solid #ddd;">
+                          Never crossed (/20)</th>
+                      </tr>
+                      <tr style="background:#f5f5f5;">
+                        <th>SL</th><th>SA</th><th>AD</th>
+                        <th>SA</th><th>AD</th>
+                        <th>SL</th><th>SA</th><th>AD</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style="background:#fff0f0;">
+                        <td colspan="10" style="text-align:left;font-weight:600;
+                            color:#c0392b;padding:4px 8px;">
+                          Anti-correlated</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">PPA→OFA</td>
+                        <td>−0.33</td>
+                        <td>0.439</td><td>0.720</td><td>0.629</td>
+                        <td style="color:#27ae60;font-weight:600;">+2.13***</td>
+                        <td style="color:#27ae60;font-weight:600;">+1.19***</td>
+                        <td style="color:#c0392b;font-weight:600;">16</td><td>2</td><td>6</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">FFA-1→PPA</td>
+                        <td>−0.19</td>
+                        <td>0.300</td><td>0.577</td><td>0.458</td>
+                        <td style="color:#27ae60;font-weight:600;">+2.31***</td>
+                        <td style="color:#27ae60;font-weight:600;">+1.71***</td>
+                        <td style="color:#c0392b;font-weight:600;">20</td><td>5</td><td>10</td>
+                      </tr>
+                      <tr style="background:#f0f4ff;">
+                        <td colspan="10" style="text-align:left;font-weight:600;
+                            color:#2980b9;padding:4px 8px;">
+                          Near-zero correlation</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">V1v→PPA</td>
+                        <td>+0.14</td>
+                        <td>0.541</td><td>0.728</td><td>0.613</td>
+                        <td style="color:#27ae60;font-weight:600;">+1.61***</td>
+                        <td>+0.54ns</td>
+                        <td style="color:#c0392b;font-weight:600;">17</td><td>6</td><td>12</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">EBA→PPA</td>
+                        <td>+0.21</td>
+                        <td>0.447</td><td>0.630</td><td>0.565</td>
+                        <td style="color:#27ae60;font-weight:600;">+1.28***</td>
+                        <td style="color:#27ae60;font-weight:600;">+1.10**</td>
+                        <td style="color:#c0392b;font-weight:600;">17</td><td>4</td><td>9</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">PPA→V1v</td>
+                        <td>+0.01</td>
+                        <td>0.669</td><td>0.754</td><td>0.730</td>
+                        <td style="color:#27ae60;font-weight:600;">+1.64***</td>
+                        <td style="color:#27ae60;font-weight:600;">+1.15***</td>
+                        <td>0</td><td>0</td><td>0</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">EBA→OFA</td>
+                        <td>+0.20</td>
+                        <td>0.977</td><td>0.918</td><td>0.876</td>
+                        <td>−0.28ns</td>
+                        <td>−0.42ns</td>
+                        <td>0</td><td>0</td><td>0</td>
+                      </tr>
+                      <tr style="background:#f0fff0;">
+                        <td colspan="10" style="text-align:left;font-weight:600;
+                            color:#27ae60;padding:4px 8px;">
+                          Highly correlated (free ride)</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">OPA→PPA</td>
+                        <td>+0.92</td>
+                        <td>1.068</td><td>0.782</td><td>1.004</td>
+                        <td style="color:#c0392b;font-weight:600;">−2.12***</td>
+                        <td>−0.41ns</td>
+                        <td>0</td><td>0</td><td>0</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">OFA→FFA-1</td>
+                        <td>+0.70</td>
+                        <td>1.105</td><td>0.923</td><td>1.023</td>
+                        <td style="color:#c0392b;font-weight:600;">−0.94**</td>
+                        <td>−0.41ns</td>
+                        <td>9</td><td>3</td><td>11</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
-          </footer>
+          </div>
+
+          <p>
+            The pattern is consistent across pairs. On anti-correlated pairs, stateless
+            fails entirely — it never crosses over on 16 to 20 out of 20 seeds — while
+            both state-aware methods find the new target. On near-zero pairs, classic
+            state-aware reliably outperforms stateless; adaptive state-aware is more
+            variable but avoids large losses. On highly correlated pairs, the free ride
+            dominates: classic state-aware loses badly ($d = -2.12^{***}$ on OPA→PPA)
+            while adaptive state-aware tracks stateless closely, correctly identifying
+            that no intervention is needed.
+          </p>
+
+          <div class="columns is-centered mt-5 mb-2">
+            <div class="column">
+              <div class="box has-text-centered">
+                <img src="./static/images/fig_peak_b_late.png"
+                     alt="Peak new ROI score" width="100%"/>
+                <p class="subtitle is-6 mt-3"
+                   style="text-align:left;max-width:820px;margin:0 auto;">
+                  <strong>Figure 1. Did the algorithm find the new target?</strong>
+                  Mean raw activation of the new brain region in the last 50 evaluations,
+                  for three representative pairs spanning the correlation spectrum. On
+                  anti-correlated and near-zero pairs, both state-aware methods
+                  significantly outperform stateless. On the highly correlated pair,
+                  stateless wins: the free ride gives it full access to a region that
+                  was already rising. Adaptive state-aware is the only method that avoids
+                  both failure modes. Bars = mean ± SEM, 20 seeds. Brackets show
+                  Cohen's $d$ vs stateless.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns is-centered mt-5 mb-2">
+            <div class="column">
+              <div class="box has-text-centered">
+                <img src="./static/images/fig_trajectories.png"
+                     alt="ROI score trajectories" width="100%"/>
+                <p class="subtitle is-6 mt-3"
+                   style="text-align:left;max-width:820px;margin:0 auto;">
+                  <strong>Figure 2. ROI score trajectories across three correlation
+                  regimes.</strong> Rows correspond to anti-correlated ($r = -0.19$,
+                  FFA-1→PPA), near-zero ($r = +0.14$, V1v→PPA), and highly correlated
+                  ($r = +0.92$, OPA→PPA) pairs. <strong>Left:</strong> absolute raw
+                  activation scores for the stateless baseline (dashed orange = old ROI,
+                  solid blue = new ROI), averaged across 20 seeds with shaded SEM.
+                  The dotted vertical line marks the transition at eval 120.
+                  <strong>Centre and right:</strong> difference versus stateless for
+                  classic state-aware and adaptive state-aware, smoothed with a 7-eval
+                  window. Blue above zero means that algorithm drove the new ROI better
+                  than stateless; orange below zero means it released the old ROI more.
+                  On anti-correlated and near-zero pairs, both state-aware methods show
+                  a clear upward divergence after the transition. On the highly correlated
+                  pair, classic state-aware drops sharply below zero on both ROIs, while
+                  adaptive state-aware stays near zero throughout.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="title is-4">4.3 The Advantage Compounds Across Multiple
+          Transitions</h3>
+          <p>
+            We extend to three- and four-ROI sequences to test whether the algorithm can
+            track multiple sequential target changes. Tables 2 and 3 summarise the results.
+            The key finding is that the advantage of state-awareness grows with each
+            transition: at T1 the methods perform similarly, but by T2 both state-aware
+            methods significantly outperform stateless, and the gap continues to widen.
+          </p>
+
+          <!-- Table 2 -->
+          <div class="columns is-centered mt-4 mb-2">
+            <div class="column">
+              <div class="box">
+                <p class="subtitle is-6 has-text-centered mb-3">
+                  <strong>Table 2. Three-ROI results.</strong>
+                  Top: aggregate across all 8 triplets (160 observations per algorithm).
+                  Bottom: peak Phase 2 score for the three strongest triplets, showing
+                  the number of seeds where stateless never drove the final target above
+                  the previous one.
+                </p>
+                <div style="overflow-x:auto;">
+                  <table class="table is-fullwidth is-hoverable is-size-7"
+                         style="text-align:center;">
+                    <thead>
+                      <tr style="background:#f5f5f5;">
+                        <th style="text-align:left;">Metric</th>
+                        <th>SL</th><th>SA</th><th>AD</th>
+                        <th>SA vs SL ($d$)</th>
+                        <th>AD vs SL ($d$)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style="background:#fafafa;">
+                        <td colspan="6" style="text-align:left;font-weight:600;
+                            padding:4px 8px;">Aggregate (all 8 triplets)</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">AQ at T1</td>
+                        <td>−0.004</td><td>+0.014</td><td>+0.032</td>
+                        <td>+0.13ns</td>
+                        <td style="color:#27ae60;">+0.27*</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">AQ at T2</td>
+                        <td>+0.011</td><td>+0.054</td><td>+0.068</td>
+                        <td style="color:#27ae60;font-weight:600;">+0.35**</td>
+                        <td style="color:#27ae60;font-weight:600;">+0.41***</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">Peak Phase 2</td>
+                        <td>+0.716</td><td>+0.740</td><td>+0.806</td>
+                        <td>+0.08ns</td>
+                        <td style="color:#27ae60;">+0.26*</td>
+                      </tr>
+                      <tr style="background:#fafafa;">
+                        <td colspan="6" style="text-align:left;font-weight:600;
+                            padding:4px 8px;">Strongest triplets — Peak Phase 2 score</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">OFA→FFA-1→PPA</td>
+                        <td>0.284 <span style="color:#c0392b;">(19/20 fail)</span></td>
+                        <td>0.580</td><td>0.542</td>
+                        <td style="color:#27ae60;font-weight:600;">+2.20***</td>
+                        <td style="color:#27ae60;font-weight:600;">+1.74***</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">FFA-1→VWFA-1→PPA</td>
+                        <td>0.295 <span style="color:#c0392b;">(18/20 fail)</span></td>
+                        <td>0.541</td><td>0.659</td>
+                        <td style="color:#27ae60;font-weight:600;">+2.63***</td>
+                        <td style="color:#27ae60;font-weight:600;">+2.65***</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">EBA→OFA→PPA</td>
+                        <td>0.441 <span style="color:#c0392b;">(14/20 fail)</span></td>
+                        <td>0.609</td><td>0.640</td>
+                        <td style="color:#27ae60;font-weight:600;">+1.21***</td>
+                        <td style="color:#27ae60;font-weight:600;">+1.09**</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Table 3 -->
+          <div class="columns is-centered mt-4 mb-2">
+            <div class="column">
+              <div class="box">
+                <p class="subtitle is-6 has-text-centered mb-3">
+                  <strong>Table 3. Four-ROI results: OFA→FFA-1→PPA→RSC.</strong>
+                  Mean raw activation of the active target region per phase. Transitions
+                  at evals 99, 168, and 234. Stateless completely fails to adapt after
+                  Phase 1; both state-aware methods successfully track all four targets.
+                </p>
+                <div style="overflow-x:auto;">
+                  <table class="table is-fullwidth is-hoverable is-size-7"
+                         style="text-align:center;">
+                    <thead>
+                      <tr style="background:#f5f5f5;">
+                        <th style="text-align:left;">Phase (target)</th>
+                        <th>SL</th><th>SA</th><th>AD</th>
+                        <th>SA vs SL ($d$)</th>
+                        <th>AD vs SL ($d$)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="text-align:left;">Phase 0 (OFA)</td>
+                        <td>1.148</td><td>1.048</td><td>1.140</td>
+                        <td style="color:#c0392b;">−0.75*</td>
+                        <td>−0.07ns</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">Phase 1 (FFA-1)</td>
+                        <td>1.131</td><td>0.929</td><td>1.012</td>
+                        <td style="color:#c0392b;">−0.89**</td>
+                        <td>−0.40ns</td>
+                      </tr>
+                      <tr style="background:#fff8e1;">
+                        <td style="text-align:left;">Phase 2 (PPA)
+                          <span style="color:#c0392b;font-weight:600;">
+                            ← SL fails 20/20</span></td>
+                        <td style="color:#c0392b;font-weight:600;">0.291</td>
+                        <td>0.548</td><td>0.501</td>
+                        <td style="color:#27ae60;font-weight:600;">+1.63***</td>
+                        <td style="color:#27ae60;font-weight:600;">+1.31***</td>
+                      </tr>
+                      <tr style="background:#fff8e1;">
+                        <td style="text-align:left;">Phase 3 (RSC)</td>
+                        <td style="color:#c0392b;font-weight:600;">0.354</td>
+                        <td>0.817</td><td>0.671</td>
+                        <td style="color:#27ae60;font-weight:600;">+2.61***</td>
+                        <td style="color:#27ae60;font-weight:600;">+1.85***</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p>
+            The compounding effect is clear in Table 3: in early phases, stateless performs
+            comparably or better, benefiting from the free ride across similar face-selective
+            regions. From Phase 2 onward, it fails completely, never adapting on any of the
+            20 seeds. Both state-aware methods successfully track all four targets, with the
+            gap widening at each transition. Adaptive state-aware loses less in the early
+            phases ($d = -0.07$ ns in Phase 0) while matching classic state-aware in the
+            later ones, making it the safer choice across the full sequence.
+          </p>
+
+          <div class="columns is-centered mt-5 mb-2">
+            <div class="column">
+              <div class="box has-text-centered">
+                <img src="./static/images/fig_three_roi_peak_ph2.png"
+                     alt="Three-ROI peak phase 2" width="100%"/>
+                <p class="subtitle is-6 mt-3"
+                   style="text-align:left;max-width:820px;margin:0 auto;">
+                  <strong>Figure 3. Did the algorithm find the third target?</strong>
+                  Mean raw activation of the final target region in the last 30 evaluations
+                  after T2, for the three strongest triplets. Stateless fails on 14/20,
+                  19/20, and 18/20 seeds respectively. Both state-aware variants drive the
+                  final region significantly higher ($d > +1.0^{***}$ on all three triplets).
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns is-centered mt-5 mb-2">
+            <div class="column">
+              <div class="box has-text-centered">
+                <img src="./static/images/fig_four_roi_trajectories.png"
+                     alt="Four-ROI raw trajectories" width="100%"/>
+                <p class="subtitle is-6 mt-3"
+                   style="text-align:left;max-width:820px;margin:0 auto;">
+                  <strong>Figure 4. Four-ROI raw trajectories.</strong> Mean raw activation
+                  of all four regions across the 300-eval session, averaged across 20 seeds
+                  (shaded = SEM). Dotted lines mark T1, T2, T3. Under stateless, OFA and
+                  FFA-1 remain dominant throughout and PPA and RSC never rise. Both
+                  state-aware variants show clean sequential shifts at each transition.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3" id="negative">V. What We Tried That Didn't Work</h2>
+        <div class="content has-text-justified">
+          <h3 class="title is-4">Hierarchical Clustering for Diversity Injection</h3>
+          TODO Florian
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3" id="conclusion">VI. Conclusion and Limitations</h2>
+        <div class="content has-text-justified">
+          <p>
+            How do you optimize for a brain region that keeps changing, when all you ever
+            see is a single number? Our answer is: by learning to forget selectively.
+            We extended surrogate-assisted neural image search with drift-aware components
+            and showed that the benefit of state-awareness depends critically on the
+            correlation structure between successive target regions. On anti-correlated and
+            near-zero pairs, state-aware methods win decisively by actively forgetting the
+            pre-drift landscape. On highly correlated pairs, they hurt, suppressing a region
+            that was already rising for free. The adaptive window controller resolves this
+            tension by inferring the regime from the blended reward alone, matching stateless
+            performance where the free ride is available while recovering the state-aware
+            advantage where genuine drift must be tracked. In multi-region sequences, the
+            advantage compounds over the session: by the second and third transition, both
+            state-aware methods significantly outperform stateless, and the adaptive
+            controller's margin widens as it has had more time to converge within each regime.
+          </p>
+          <p><strong>Limitations.</strong>
+            Drift in our experiments is simulated via a smooth sigmoid schedule. Rapid or
+            oscillating drift would be unreliable to test in simulation as the search space
+            is large enough that the surrogate cannot track a target shifting faster than it
+            can converge, and faithfully reproducing real neural drift requires real
+            recordings. That said, our evaluation spans a broad range of ROI pairs with
+            varying correlation structure, from strongly anti-correlated to highly
+            correlated, providing meaningful coverage of the regimes a real system would
+            encounter. Most importantly, the method has not yet been validated on real
+            neural recordings; our most aggressive drift conditions are intended to
+            approximate the faster, noisier regime of EEG, but true validation will require
+            moving beyond simulated BERG scores to live recordings.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <h6 class="title is-6">Individual Contributions</h6>
+          <p>
+            <strong>Sogand Salehi</strong> developed the full drift-aware framework
+            including recency windowing, the state-conditioned surrogate, and the adaptive
+            window controller. Designed and ran all experiments across two-ROI, three-ROI,
+            four-ROI, and robustness conditions, performed statistical analysis, and created
+            the website.
+            <strong>Florian Olivier Déjean</strong> implemented and evaluated hierarchical
+            clustering for the diversity injector, studying repeated-neighborhood sampling
+            with systematic tree-based coverage of the prompt space, and analyzed the CLIP
+            vs BERG embedding structure.
+            <strong>Elies Amari-Milliti</strong> designed the method overview figure and
+            worked on smarter drift metrics for capturing adaptation quality across transition
+            regimes.
+            <strong>Michał Grudzień</strong> worked on hyperparameter tuning for the window
+            size and drift threshold.
+          </p>
+          <p><em>
+            This website is based on the
+            <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies template</a>,
+            licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+          </em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
