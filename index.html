@@ -858,7 +858,96 @@
         <h2 class="title is-3" id="negative">V. What We Tried That Didn't Work</h2>
         <div class="content has-text-justified">
           <h3 class="title is-4">Hierarchical Clustering for Diversity Injection</h3>
-          TODO Florian
+          <p>
+            When the slope trigger fires, where in the $10^{23}$-prompt space
+            should fresh candidates come from? We compared three algorithms
+            on FFA-1$\to$PPA: <strong>uniform random prompts,
+            random sampling from k-means clusters, and a hierarchical walk </strong>
+            over a CLIP$\to$UMAP$\to$HDBSCAN cluster tree anchored on the
+            elite-farthest cluster. Table 4 layers them on top of two
+            baselines, <em>Stateless</em> (no windowing, no state) and
+            <em>State + window</em> (recency windowing + state descriptor,
+            no explorer)
+          </p>
+
+          <!-- Table 4 -->
+          <div class="columns is-centered mt-4 mb-2">
+            <div class="column">
+              <div class="box">
+                <p class="subtitle is-6 has-text-centered mb-3">
+                  <strong>Table 4. Diversity-injection ablation on
+                  FFA-1$\to$PPA</strong> <br> anti-correlated,
+                  10 seeds, transition at eval 120. <br> Peak new ROI is mean
+                  raw PPA over the last 50 evals. <br> $d_{\text{SL}}$ is Cohen's
+                  $d$ vs Stateless, $d_{\text{SW}}$ vs <em>State + window</em>.
+                
+                </p>
+                <div style="overflow-x:auto;">
+                  <table class="table is-fullwidth is-hoverable is-size-7"
+                         style="text-align:center;">
+                    <thead>
+                      <tr style="background:#f5f5f5;">
+                        <th style="text-align:left;">Condition</th>
+                        <th>Peak PPA</th>
+                        <th>$d_{\text{SL}}$</th>
+                        <th>$d_{\text{SW}}$</th>
+                        <th>Never crossed (/10)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="text-align:left;">Stateless</td>
+                        <td>0.297</td>
+                        <td>&mdash;</td>
+                        <td style="color:#c0392b;">$-2.92$***</td>
+                        <td style="color:#c0392b;">2</td>
+                      </tr>
+                      <tr style="background:#f7faff;">
+                        <td style="text-align:left;"><strong>State + window</strong></td>
+                        <td><strong>0.555</strong></td>
+                        <td style="color:#27ae60;font-weight:600;">$+2.92$***</td>
+                        <td>&mdash;</td>
+                        <td>0</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">+ explorer, random prompt</td>
+                        <td>0.523</td>
+                        <td style="color:#27ae60;">$+3.23$***</td>
+                        <td>$-0.35$ ns</td>
+                        <td>0</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">+ explorer, random k-means clusters</td>
+                        <td>0.542</td>
+                        <td style="color:#27ae60;">$+3.80$***</td>
+                        <td>$-0.15$ ns</td>
+                        <td>0</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">+ explorer, hierarchical walk</td>
+                        <td>0.546</td>
+                        <td style="color:#27ae60;">$+3.85$***</td>
+                        <td>$-0.10$ ns</td>
+                        <td>0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p>
+            Table 4 shows the clustering does not beat the SW baseline:
+            Every explorer variant lands within noise of it (peak PPA 0.542–0.546 vs 0.555; $d_{\text{SW}} = -0.10$ to $-0.35$, all n.s.).
+            As the surrogate is windowed
+            and state-conditioned, the population recovers from its own
+            breeding fast enough that the injection-time choice of prompts
+            stops mattering.
+
+            One suspicion was that our clusters live in CLIP, not BERG: prompts far apart in CLIP can still trigger near-identical PPA activations, so "diverse in CLIP" is not "diverse for the
+            oracle". Yet clustering on BERG features directly (${\sim}10,000$ prompts) was significantly worse, hence the embedding space wasn't the problem.
+          </p>
         </div>
       </div>
     </div>
