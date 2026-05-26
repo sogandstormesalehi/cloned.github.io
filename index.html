@@ -462,10 +462,10 @@
             pairs (200 evals, one transition at eval 120), eight three-ROI triplets
             (300 evals, transitions at evals 120 and 210), and four four-ROI quadruplets
             (300 evals, transitions at evals 99, 168, and 234). All conditions use 20
-            random seeds. We compare three algorithms: <strong>Stateless</strong> (no
-            windowing, full history), <strong>Classic state-aware</strong> (fixed
+            random seeds. We compare three algorithms: <strong>Stateless</strong> (SL; no
+            windowing, full history), <strong>Classic state-aware</strong> (SA; fixed
             $W_s = 40$, $W_e = 20$, state descriptor, slope trigger), and
-            <strong>Adaptive state-aware</strong> ($W_s$ initialised at 100 and
+            <strong>Adaptive state-aware</strong> (AD; $W_s$ initialised at 100 and
             controller-driven, state descriptor, slope trigger). Component ablations
             were conducted to isolate individual contributions.
           </p>
@@ -483,6 +483,20 @@
             and <em>crossover</em>: whether the new region's 10-eval rolling mean ever
             exceeded the old region's. All comparisons are Cohen's $d$ relative to
             stateless, assessed by Mann-Whitney U test.
+          </p>
+
+          <p>
+            As a sanity check, we also evaluate all three algorithms on static
+            single-target optimisation (no drift) across six visual ROIs. SA
+            consistently underperforms SL in the final-window score across all
+            ROIs, while AD approximately matches SL. This is expected: without
+            drift, the recency windowing and state-tracking machinery in SA
+            actively waste evaluations on candidates that are informative about
+            session dynamics rather than the target itself. AD avoids this by
+            expanding its window when no drift signal is detected, effectively
+            recovering stateless behaviour. This confirms that the adaptive
+            controller's core property — doing nothing when there is nothing to
+            adapt to — holds even in the simplest possible regime.
           </p>
 
           <h3 class="title is-4">4.2 State-Awareness Helps — But Only When Needed</h3>
@@ -810,7 +824,12 @@
             phases ($d = -0.07$ ns in Phase 0) while matching classic state-aware in the
             later ones, making it the safer choice across the full sequence.
           </p>
-
+          <p>
+            The three-ROI results are also the most stable across evaluation
+            budgets: all conditions show consistent effect direction whether run
+            at 200, 250, or 300 evaluations, lending additional confidence to the
+            compounding-advantage claim beyond what sample size alone provides.
+          </p>
           <div class="columns is-centered mt-5 mb-2">
             <div class="column">
               <div class="box has-text-centered">
