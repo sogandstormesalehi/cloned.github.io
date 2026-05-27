@@ -326,7 +326,9 @@
               <div class="box has-text-centered">
                 <img src="./static/images/method_overview.png" alt="Method overview" width="100%"/>
                 <p class="subtitle is-6 mt-2">
-                  TODO Elies
+                  Drift-aware evolutionary prompt optimization. The loop combines genetic prompt search, 
+                  state-conditioned surrogate scoring, and oracle evaluation, with adaptive memory for 
+                  smooth drift and emergency prompt injection for sharp reward drops.
                 </p>
               </div>
             </div>
@@ -441,7 +443,72 @@
             while the slope trigger handles sharp stagnation by diversifying the candidate pool.
           </p>
 
-          <h3 class="title is-4">3.5 TODO Elies</h3>
+          <h3 class="title is-4">3.5 Smarter Online Drift Metrics</h3>
+          <p>
+            The original drift-aware search used a simple slope trigger: when the recent reward
+            trend became sufficiently negative, the explorer injected candidates from distant
+            prompt clusters. We extended this mechanism with online drift metrics computed from
+            the true per-evaluation blended reward observed so far. These detectors do not use
+            the hidden ROI scores, the drift schedule, or future evaluations.
+          </p>
+
+          <div class="columns is-centered mt-4 mb-2">
+            <div class="column">
+              <div class="box">
+                <p class="subtitle is-6 has-text-centered mb-3">
+                  <strong>Online drift trigger candidates.</strong>
+                  Each detector monitors the observed reward stream and triggers diversity injection
+                  when it detects a persistent degradation.
+                </p>
+                <div style="overflow-x:auto;">
+                  <table class="table is-fullwidth is-hoverable is-size-7"
+                        style="text-align:center;">
+                    <thead>
+                      <tr style="background:#f5f5f5;">
+                        <th style="text-align:left;">Detector</th>
+                        <th>Online signal</th>
+                        <th style="text-align:left;">Trigger intuition</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="text-align:left;"><strong>EWMA</strong></td>
+                        <td>Smoothed reward</td>
+                        <td style="text-align:left;">
+                          Fires when the exponentially smoothed reward drops relative to its
+                          value a fixed lag earlier.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;"><strong>CUSUM-style</strong></td>
+                        <td>Recent reward deficit</td>
+                        <td style="text-align:left;">
+                          Accumulates repeated under-performance relative to a recent reference
+                          window.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;"><strong>Page-Hinkley-style</strong></td>
+                        <td>Mean reward shift</td>
+                        <td style="text-align:left;">
+                          Detects a windowed change in the mean reward, using negative reward
+                          to focus on performance drops.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;"><strong>ADWIN-like</strong></td>
+                        <td>Old vs recent mean</td>
+                        <td style="text-align:left;">
+                          Compares an older reward window with a recent one and fires if recent
+                          performance is lower.
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -863,12 +930,99 @@
               </div>
             </div>
           </div>
+          
+          <h3 class="title is-4">4.4 Smarter Drift Metrics</h3>
+          <p>
+            We evaluate the new trigger metrics on the FFA-1→PPA drift setting over 30 seeds,
+            using the same best state-aware configuration. The slope baseline uses the original
+            generation-mean reward signal, while the new detectors use the true per-evaluation
+            blended reward observed online.
+          </p>
+          <p>
+            <strong>PPA late50</strong> is the mean PPA score over the last 50 evaluations;
+            <strong>ΔPPA</strong> measures the increase in PPA from early to late session;
+            <strong>Blended late50</strong> is the final reward actually optimized by the
+            algorithm; and <strong>PPA−FFA Q4</strong> measures whether the final quarter is
+            more aligned with the new target PPA than the old target FFA.
+          </p>
+
+          <div class="columns is-centered mt-4 mb-2">
+            <div class="column">
+              <div class="box">
+                <p class="subtitle is-6 has-text-centered mb-3">
+                  <strong>Table 4. Smarter online drift metrics.</strong>
+                  Mean ± std over 30 seeds. Higher is better for all reported metrics.
+                </p>
+                <div style="overflow-x:auto;">
+                  <table class="table is-fullwidth is-hoverable is-size-7"
+                        style="text-align:center;">
+                    <thead>
+                      <tr style="background:#f5f5f5;">
+                        <th style="text-align:left;">Trigger metric</th>
+                        <th>PPA late50 ↑</th>
+                        <th>ΔPPA ↑</th>
+                        <th>Blended late50 ↑</th>
+                        <th>PPA−FFA Q4 ↑</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="text-align:left;">Slope baseline</td>
+                        <td>0.568 ± 0.096</td>
+                        <td>0.179 ± 0.104</td>
+                        <td><strong>0.660 ± 0.313</strong></td>
+                        <td>0.044 ± 0.233</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">EWMA</td>
+                        <td>0.572 ± 0.120</td>
+                        <td>0.183 ± 0.105</td>
+                        <td>0.607 ± 0.382</td>
+                        <td>0.116 ± 0.277</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">CUSUM-style</td>
+                        <td><strong>0.586 ± 0.124</strong></td>
+                        <td><strong>0.197 ± 0.118</strong></td>
+                        <td>0.640 ± 0.407</td>
+                        <td><strong>0.152 ± 0.252</strong></td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">Page-Hinkley-style</td>
+                        <td>0.585 ± 0.101</td>
+                        <td>0.196 ± 0.090</td>
+                        <td><strong>0.660 ± 0.330</strong></td>
+                        <td>0.146 ± 0.203</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align:left;">ADWIN-like</td>
+                        <td>0.544 ± 0.094</td>
+                        <td>0.155 ± 0.103</td>
+                        <td>0.505 ± 0.310</td>
+                        <td>0.077 ± 0.206</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p>
+            CUSUM-style and Page-Hinkley-style triggers are the most promising. CUSUM gives the
+            strongest shift toward PPA, while Page-Hinkley preserves the final blended reward of
+            the slope baseline and still improves PPA–FFA separation. ADWIN-like underperforms
+            with the current hyperparameters.
+          </p>
+
 
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -883,18 +1037,18 @@
             on FFA-1$\to$PPA: <strong>uniform random prompts,
             random sampling from k-means clusters, and a hierarchical walk </strong>
             over a CLIP$\to$UMAP$\to$HDBSCAN cluster tree anchored on the
-            elite-farthest cluster. Table 4 layers them on top of two
+            elite-farthest cluster. Table 5 layers them on top of two
             baselines, <em>Stateless</em> (no windowing, no state) and
             <em>State + window</em> (recency windowing + state descriptor,
             no explorer)
           </p>
 
-          <!-- Table 4 -->
+          <!-- Table 5 -->
           <div class="columns is-centered mt-4 mb-2">
             <div class="column">
               <div class="box">
                 <p class="subtitle is-6 has-text-centered mb-3">
-                  <strong>Table 4. Diversity-injection ablation on
+                  <strong>Table 5. Diversity-injection ablation on
                   FFA-1$\to$PPA</strong> <br> anti-correlated,
                   10 seeds, transition at eval 120. <br> Peak new ROI is mean
                   raw PPA over the last 50 evals. <br> $d_{\text{SL}}$ is Cohen's
@@ -957,7 +1111,7 @@
           </div>
 
           <p>
-            Table 4 shows the clustering does not beat the SW baseline:
+            Table 5 shows the clustering does not beat the SW baseline:
             Every explorer variant lands within noise of it (peak PPA 0.542–0.546 vs 0.555; $d_{\text{SW}} = -0.10$ to $-0.35$, all n.s.).
             As the surrogate is windowed
             and state-conditioned, the population recovers from its own
