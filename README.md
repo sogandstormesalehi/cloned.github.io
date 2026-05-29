@@ -1,43 +1,80 @@
-# cloned.github.io
-repo containing the code for CLoNeD: Closed-Loop Visual Neuromodulation under Neural Drift
+# CLoNeD: Closed-Loop Visual Neuromodulation under Neural Drift
 
+**How do you optimize for a brain region that keeps changing, when all you ever see is a single number?**
 
-<p align="center">
-  <img src="assets/epfl_logo.svg" alt="description" width="200">
-</p>
-<h1 align="center">EPFL CS503 - Visual Intelligence<br>Machine and Minds <br>Course Project Website Template</h1>
+📄 [Project Website](https://sogandstormesalehi.github.io/cloned.github.io/)
 
-This repository contains the template code for preparing final project reports using GitHub Page. 
-
-## Steps to Use the Template
-Follow the given steps to clone the repository to your local and publish on the website afterwards. 
-
-### 1 - Clone and Edit the Repository 
-```bash
-git clone https://github.com/EPFL-VILAB/cs503-project-webpage-template.git
-```
-After cloning the repository, make changes in the file `index.html` to modify your website as you wish. The parts that can be edited are labeled with following blocks: 
-
-```html
-<!--TODO: CODE BLOCK DESCRIPTION-->
-
-
-<!-------------------------------->
-```
-
-The `static` folder can be used for storing images, gifs, videos and other content that can be used in the report for reporting. 
-
-After making the edits update the repository and commit your changes. 
-
-### 2 - Publish the Website on GitHub Pages
-The website can be published following the given steps: 
-
-1. Go to _Settings_ in of the repository and select _Pages_ under the group _Code and Automation_ from the left corner options. 
-
-2. Select the source as _Deploy from a branch_ 
-
-3. Wait for some time and you can see the first deployment following the provided link at your domain 🎉.
-
-4. Afterwards, your commits will update the website each time. 
 ---
-This template has been taken from [here](https://nerfies.github.io).
+
+## Abstract
+
+Closed-loop neural stimulus optimisation finds images that maximally drive a target brain region using only scalar neural feedback. We build on surrogate-assisted genetic search over a structured prompt space. A core assumption shared across existing approaches is that the target region remains fixed throughout the session. In practice this is routinely violated: neural responses drift within minutes due to fatigue, habituation, and fluctuating attention, and the algorithm observes only a single blended scalar reward and is never told a shift has occurred. We study how to make surrogate-assisted search robust to this drift, simulating it by smoothly interpolating the reward across multiple fMRI-characterised brain regions so the algorithm must transition between targets blindly. Our central finding is that the benefit of state-awareness depends critically on the correlation structure between successive targets. When regions share image preferences, the incoming target rises before the transition as a side-effect of optimising the outgoing one, a free ride that stateless search exploits fully while state-aware methods disrupt it. When regions prefer opposing content, state-awareness wins by actively forgetting the pre-drift landscape. We introduce an adaptive window controller that infers the drift regime from the reward signal alone and adjusts the surrogate's memory accordingly, avoiding both failure modes without requiring any prior knowledge of the underlying cause for drift.
+
+
+---
+
+## Key Findings
+
+**The benefit of state-awareness depends critically on the correlation structure between successive targets.**
+
+- **Anti-correlated pairs** (e.g. face-selective → place-selective): stateless search fails entirely since it stays anchored to the pre-drift landscape and never finds the new target. State-aware methods win decisively by actively forgetting what worked before.
+
+- **Highly correlated pairs** (e.g. neighbouring visual areas with shared preferences): the new target is already rising before the transition as a side-effect of optimising the old one — a *free ride*. Classic state-aware methods disrupt this by suppressing content that was already working. Stateless wins here.
+
+- **Adaptive state-aware** avoids both failure modes: it expands its memory window when no drift is detected (recovering stateless behaviour on the free ride), and shrinks it aggressively when the reward signal suggests a genuine shift.
+
+**The advantage compounds across multiple transitions.** In three- and four-region sequences, state-aware methods perform similarly to stateless at the first transition but increasingly outperform it at subsequent ones. By the third and fourth phase, stateless fails completely on most seeds while both state-aware variants track all targets sequentially.
+
+**Speed matters too.** Measured by post-transition AUC (mean new-target activation from the transition to the end of the session), state-aware methods significantly outperform stateless on anti-correlated pairs across all experiment complexities. On correlated pairs the pattern reverses, and the adaptive controller is the only method that avoids degradation in both regimes.
+
+---
+
+## Method
+
+The base algorithm — surrogate-assisted genetic search over a structured text prompt space for ROI maximisation — is prior work from the [Visual Intelligence and Learning lab](https://vilab.epfl.ch/). CLoNeD extends it with three drift-aware components:
+
+- **Recency windowing**: restricts surrogate training to recent observations, preventing stale pre-drift history from dominating
+- **State-conditioned surrogate**: augments each training point with a session state descriptor (recent mean, slope, variance of the reward), letting the surrogate condition on current dynamics
+- **Adaptive window controller**: monitors the reward trajectory and adjusts the memory window length: shrinks it when a quiet reward decline signals a correlated drift ending, grows it back during stable improvement
+
+The search operates over a structured prompt space of ~10²³ candidates across 17 semantic dimensions. A CLIP text surrogate pre-screens candidates each generation, and a BERG fMRI encoding model provides oracle scores.
+
+---
+
+## Installation
+
+```bash
+pip install brainscore_vision brainscore_core brainscore-brainio matplotlib torch transformers \
+    torchvision requests diffusers pillow resmem open-clip-torch lpips piq xgboost \
+    scikit-learn accelerate openai scikit-learn scipy umap-learn tqdm wandb
+
+pip install -U git+https://github.com/gifale95/BERG.git@79b5721d749d010fc4001da076a079eeb81a927f
+```
+
+---
+
+## Running
+
+```bash
+python -m cloned.main
+```
+
+---
+
+## Repository Structure
+
+```
+cloned/
+├── algorithms/       # Genetic search, surrogate, drift explorer
+├── rewards/          # ROI reward classes, drift reward wrappers
+├── generators/       # SDXL-Turbo image generation
+├── spaces/           # Structured prompt space
+├── analysis/         # Figures, statistics, crossover tables
+└── main.py           # Entry point
+```
+
+```
+
+---
+
+*Built on the [Natural Scenes Dataset](https://naturalscenesdataset.org/) and [BERG](https://github.com/gifale95/BERG) encoding models.*
