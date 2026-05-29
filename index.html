@@ -1083,46 +1083,57 @@
                         <td><strong>0.660 ± 0.313</strong></td>
                         <td>0.044 ± 0.233</td>
                       </tr>
+
                       <tr>
                         <td style="text-align:left;">EWMA</td>
-                        <td>0.572 ± 0.120</td>
-                        <td>0.183 ± 0.105</td>
-                        <td>0.607 ± 0.382</td>
-                        <td>0.116 ± 0.277</td>
+                        <td>0.572 ± 0.120 <span style="color:#555;">ns</span></td>
+                        <td>0.183 ± 0.105 <span style="color:#555;">ns</span></td>
+                        <td>0.607 ± 0.382 <span style="color:#555;">ns</span></td>
+                        <td>0.116 ± 0.277 <span style="color:#555;">ns</span></td>
                       </tr>
+
                       <tr>
                         <td style="text-align:left;">CUSUM-style</td>
-                        <td><strong>0.586 ± 0.124</strong></td>
-                        <td><strong>0.197 ± 0.118</strong></td>
-                        <td>0.640 ± 0.407</td>
-                        <td><strong>0.152 ± 0.252</strong></td>
+                        <td><strong>0.586 ± 0.124</strong> <span style="color:#555;">ns</span></td>
+                        <td><strong>0.197 ± 0.118</strong> <span style="color:#555;">ns</span></td>
+                        <td>0.640 ± 0.407 <span style="color:#555;">ns</span></td>
+                        <td><strong>0.152 ± 0.252</strong> <span style="color:#555;">ns</span></td>
                       </tr>
+
                       <tr>
                         <td style="text-align:left;">Page-Hinkley-style</td>
-                        <td>0.585 ± 0.101</td>
-                        <td>0.196 ± 0.090</td>
-                        <td><strong>0.660 ± 0.330</strong></td>
-                        <td>0.146 ± 0.203</td>
+                        <td>0.585 ± 0.101 <span style="color:#555;">ns</span></td>
+                        <td>0.196 ± 0.090 <span style="color:#555;">ns</span></td>
+                        <td><strong>0.660 ± 0.330</strong> <span style="color:#555;">ns</span></td>
+                        <td>0.146 ± 0.203 <span style="color:#555;">ns</span></td>
                       </tr>
+
                       <tr>
                         <td style="text-align:left;">ADWIN-like</td>
-                        <td>0.544 ± 0.094</td>
-                        <td>0.155 ± 0.103</td>
-                        <td>0.505 ± 0.310</td>
-                        <td>0.077 ± 0.206</td>
+                        <td>0.544 ± 0.094 <span style="color:#555;">ns</span></td>
+                        <td>0.155 ± 0.103 <span style="color:#555;">ns</span></td>
+                        <td>0.505 ± 0.310 <span style="color:#555;">ns</span></td>
+                        <td>0.077 ± 0.206 <span style="color:#555;">ns</span></td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
+                <p class="mt-2" style="font-size:0.8rem;color:#555;text-align:left;">
+                  Values are mean ± std over 30 seeds. Significance markers compare each method
+                  against the slope baseline using a paired Wilcoxon signed-rank test over seeds:
+                  * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001, ns = not significant.
+                  Bold indicates the best mean value in each column.
+                </p>
               </div>
             </div>
           </div>
 
           <p>
-            CUSUM-style and Page-Hinkley-style triggers are the most promising. CUSUM gives the
-            strongest shift toward PPA, while Page-Hinkley preserves the final blended reward of
-            the slope baseline and still improves PPA–FFA separation. ADWIN-like underperforms
-            with the current hyperparameters.
+            The new metrics show promising trends, especially CUSUM and Page-Hinkley, but the 
+            gains are small compared to the variability across seeds. The paired tests 
+            therefore do not find a statistically significant improvement over the slope 
+            baseline. This suggests that the metrics change the behavior in the expected direction, 
+            but the effect is not yet robust enough to claim a definitive improvement.
           </p>
 
 
