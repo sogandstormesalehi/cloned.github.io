@@ -4,6 +4,8 @@
 
 📄 [Project Website](https://sogandstormesalehi.github.io/cloned.github.io/)
 
+<img width="1120" height="686" alt="method_overview" src="https://github.com/user-attachments/assets/9357ff26-9a4d-4daf-9dc3-c28b9240272f" />
+
 ---
 
 ## Abstract
@@ -74,7 +76,3 @@ cloned/
 ```
 
 ```
-
----
-
-*Built on the [Natural Scenes Dataset](https://naturalscenesdataset.org/) and [BERG](https://github.com/gifale95/BERG) encoding models.*
